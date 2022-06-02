@@ -2,57 +2,29 @@
 <html lang="en">
 
 <head>
-   <meta charset="UTF-8">
-   <title>MobileNet SSD Detector</title>
-   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
-      integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-   <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
-
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flask SSD MobileNet V2</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">
 </head>
 
 <body>
-   {% with messages = get_flashed_messages() %}
-   {% if messages %}
-   <ul class=flashes>
-      {% for message in messages %}
-      <li>{{ message }}</li>
-      {% endfor %}
-   </ul>
-   {% endif %}
-   {% endwith %}
-   <nav class="navbar navbar-dark bg-dark ">
-      <a class="navbar-brand navbar-center" href="#">MobileNet SSD Demo</a>
-   </nav>
-
-   <div class="container">
-      <div class="starter-template">
-         <h2>MobileNet SSD Detector</h2>
-         <p>Upload an image and see what objects are detected</p>
-         <p> Max Image Size: 2 MB </p>
-      </div>
-   </div>
-
-
-  
-
-   <div class="container">
-      <form action="predict" method=post enctype=multipart/form-data>
-         <input type=file name=file onchange="loadFile(event)">
-         <input type=submit value=Upload class="btn btn-primary">
-      </form>
-      <img id="output" alt="" width="40%" height="40%" />
-   </div>
-
-   {% if data %}
-   <div class="container">
-      <img src="{{ data.processed_img }}" alt="" width="480px" height="360px">
-      <img src="{{ data.uploaded_img }}" alt="" width="480px" height="360px">   
-   </div>
-   {% endif %}
-
-
-   <script src="{{ url_for('static', filename='js/index.js') }}"></script>
-
+    <div class="row justify-content-center">
+        <div class="container">
+            <h1>Flask SSD MobileNet V2</h1>
+            <form action="predict" method="post" enctype="multipart/form-data">
+                <div class="form-row">
+                    <div class="col-12 col-md-9 mb-2 mb-md-0">
+                        <input class="btn btn-primary" type="file" name="file" id="inputFile1">
+                        <input class="btn btn-success" type="submit" value="Upload">
+                    </div>
+                </div>
+            </form>
+            <br>
+            <br>
+        </div>
+    </div>
 </body>
 
 </html>

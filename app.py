@@ -84,11 +84,7 @@ def predict():
         predicted_image = Image.fromarray(
             image_np_with_detections.squeeze())
         predicted_image.save('downloads/' + filename)
-        data={
-                "processed_img":'downloads/'+filename,
-                "uploaded_img":'uploads/'+filename
-        }
-        return render_template('index.html', data=data)    
+        return redirect(url_for('download_file', name=file.filename))
 
 
 @app.route('/downloads/<name>')
